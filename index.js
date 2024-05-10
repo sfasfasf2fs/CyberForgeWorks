@@ -1,14 +1,11 @@
-function wordBreak(s, wordDict) {
-  const wordSet = new Set(wordDict);
-  const dp = new Array(s.length + 1).fill(false);
-  dp[0] = true;
-  for (let end = 1; end <= s.length; end++) {
-    for (let start = 0; start < end; start++) {
-      if (dp[start] && wordSet.has(s.substring(start, end))) {
-        dp[end] = true;
-        break;
-      }
-    }
+function searchInsert(nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (nums[mid] === target) return mid;
+    if (nums[mid] < target) left = mid + 1;
+    else right = mid - 1;
   }
-  return dp[s.length];
+  return left;
 }
