@@ -1,11 +1,12 @@
-function searchInsert(nums, target) {
-  let left = 0;
-  let right = nums.length - 1;
-  while (left <= right) {
-    const mid = Math.floor((left + right) / 2);
-    if (nums[mid] === target) return mid;
-    if (nums[mid] < target) left = mid + 1;
-    else right = mid - 1;
+function moveZeroes(nums) {
+  let index = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] !== 0) {
+      nums[index++] = nums[i];
+    }
   }
-  return left;
+  for (let i = index; i < nums.length; i++) {
+    nums[i] = 0;
+  }
+  return nums;
 }
